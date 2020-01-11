@@ -120,7 +120,8 @@ namespace Comet
 
 		public static async void TriggerReload()
 		{
-			var roots = View.ActiveViews.Where(x => x.Parent == null).ToList();
+			//TODO: Do something to update the CometApp.
+			var roots = View.ActiveViews.Where(x => (x.Parent is CometApp) || (x.Parent == null && !(x is CometApp) )).ToList();
 
 			await ThreadHelper.SwitchToMainThreadAsync();
 			foreach (var view in roots)
